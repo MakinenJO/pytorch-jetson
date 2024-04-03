@@ -38,3 +38,6 @@ jobs:
 
       - name: ls
         run: ls -la
+
+      - name: Docker build
+        run: docker build --platform linux/amd64.linux/arm64 --target build pytorch
