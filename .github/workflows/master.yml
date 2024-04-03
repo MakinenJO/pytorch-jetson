@@ -27,19 +27,19 @@ jobs:
       #     username: ${{ secrets.DOCKER_USERNAME }}
       #     password: ${{ secrets.DOCKER_PASSWORD }}
 
-      # - name: Build and push Docker images
-      #   uses: docker/build-push-action@v5
-      #   with:
-      #     context: ./test
-      #     push: true
-      #     tags: ${{ secrets.DOCKER_USERNAME }}/test:latest
-      #     platforms: linux/amd64,linux/arm64
-
       - name: Test
         run: echo "Hello there"
-
+      
       - name: ls
         run: ls -la
-
-      - name: Docker build
-        run: docker buildx build --platform linux/amd64 --target build --file ./pytorch/Dockerfile ./pytorch/
+      
+      # - name: Docker build
+      #   run: docker buildx build --platform linux/amd64 --target build --file ./pytorch/Dockerfile ./pytorch/
+      
+      - name: Build and push Docker images
+        uses: docker/build-push-action@v5
+        with:
+          context: context: "{{defaultContext}}:pytorch"
+          push: false
+          platforms: linux/amd64,linux/arm64
+          target: build
