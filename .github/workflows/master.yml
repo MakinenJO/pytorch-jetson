@@ -39,7 +39,8 @@ jobs:
       - name: Build and push Docker images
         uses: docker/build-push-action@v5
         with:
-          context: "{{defaultContext}}:pytorch"
+          context: "./pytorch"
+          file: "./pytorch/Dockerfile"
           push: false
           platforms: linux/amd64,linux/arm64
           target: build
