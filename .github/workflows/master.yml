@@ -40,4 +40,4 @@ jobs:
         run: ls -la
 
       - name: Docker build
-        run: docker buildx build --platform linux/amd64,linux/arm64 --target build --file pytorch/Dockerfile pytorch
+        run: docker buildx build --platform linux/amd64,linux/arm64 --target build --file ./pytorch/Dockerfile ./pytorch
