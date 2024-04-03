@@ -35,3 +35,6 @@ jobs:
 
       - name: Test
         run: echo "Hello there"
+
+      - name: ls
+        run: ls -la
